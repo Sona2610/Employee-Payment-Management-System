@@ -1,0 +1,116 @@
+def enterinfo():
+txtpayslip.delete("1.0", END)
+txtpayslip.insert(END, "\t\tPay Slip\n\n")
+txtpayslip.insert (END, "Name:\t\t"+Name.get()+"\n\n")
+txtpayslip.insert (END, "Address : \t\t"+Address.get()+"\n\n") 
+txtpayslip.insert(END, "Employer:\t\t"+Employer.get()+"\n\n")
+txtpayslip.insert(END, "NI Number:\t\t"+NINumber.get()+"\n\n")
+txtpayslip.insert(END, "Hours Worked:\t\t"+HoursWorked.get()+"\n\n") 
+txtpayslip.insert(END,"Net Payable : \t\t"+NetPayable.get()+"\n\n")
+txtpayslip.insert(END,"Wages per hour:\t\t"+wageshour.get()+"\n\n")
+txtpayslip.insert(END, "Tax Paid:\t\t"+Taxable.get()+"\n\n") 
+txtpayslip.insert (END, "Payable : \t\t"+Payable.get()+"\n\n")
+
+def weeklywages():
+
+txtpayslip.delete("1.0", END)
+hoursworkedperweek=float (HoursWorked.get())
+wagesperhours=float (wageshour.get())
+paydue=wagesperhours*hoursworkedperweek 
+paymentdue="INR",str('%.2f1%(paydue))
+Payable.set (paymentdue)
+
+tax=paydue*0.2
+taxable="INR", str('%.2f'%(tax))
+Taxable.set (taxable)
+
+netpay=paydue-tax
+netpays="INR", str('%.2f'% (netpay))
+NetPayable.set (netpays)
+
+if hoursworkedperweek > 40:
+overtimehours= (hoursworkedperweek-40) +wagesperhours*1.5
+overtime="INR", str('%.2f'% (overtimehours))
+OverTimeBonus.set(overtime) 
+elif hoursworkedperweek<=40:
+overtimepay=(hoursworkedperweek-40) +wagesperhours*1.5
+overtimehrs="INR", str('%.2f'% (overtimepay))
+OverTimeBonus.set(overtimehrs)
+return
+
+Name=StringVar()
+Address=StringVar()
+HoursWorked=StringVar()
+wageshour=StringVar()
+Payable=StringVar()
+Taxable=StringVar()
+NetPayable=StringVar()
+Gross Payable=StringVar() 
+OverTimeBonus=StringVar()
+Employer=StringVar()
+NINumber=StringVar()
+TimeOfOrder=StringVar()
+DateOfOrder=StringVar()
+DateOfOrder.set(time.strftime("%d/%m/%Y"))
+
+//Label Widget
+
+lblName=Label(fla, text="Name", font=('arial', 16, 'bold'), bd=20,fg="#303030", bg="#88EEDS").grid(row=0,column=0)
+lblAddress=Label(fla, text="Address", font=("arial", 16, 'bold'),bd=20,fg="#3D3D3D",bg="#EBBEDS").grid(row=0,column=2)
+lblEmployer=Label(fla, text="Employer", font ('arial', 16, 'bold'),bd 20,fg="+3D3D3D",bg="#EEEED5").grid(row-1,column=0)
+lblNINumber=Label(fla, text="NI Number", font=('arial', 16, 'bold'), bd=20,fg="#3D3D3D", bg="#EEEEDS").grid(row=1,column=2)
+lblHoursWorked=Label (fla, text="Hours Worked", font('arial', 16, 'bold'),bd 20,fg="#3D3D3D", bg="#EREEDS").grid (row 2,column-0)
+lblHourlyRate=Label (fla, text="Hourly Rate", font=("arial", 16, 'bold'), bd-20,fg="#3D3D3D",bg="#EEEEDS").grid(row=2,column=2)
+lblTax=Label(fla, text="Tax", font("arial', 16, 'bold'),bd-20,anchor='w',fg="#3D3D3D",bg="#EEEED5").grid(row=3,column=0) 
+lbloverTime=Label (fla, text="OverTime", font ('arial', 16, 'bold'), bd-20, fg="+303030",bg="#EEEED5").grid(row-3,column-2) 
+lblGrossPay=Label(fla,text="GrossPay", font=("arial", 16, 'bold'), bd-20, fg="43D3D3D", bg="#EEEEDS").grid(row-4,column=0) 
+lblNetPay=Label(fla, text="Net Pay", font=('arial',16, 'bold'),bd 20, fg="#3D3D3D", bg="#EEEED5").grid(row=4,column=2)
+
+//Entry Widget
+
+etxname=Entry (fla, textvariable=Name, font=('arial', 16, 'bold'), bd-16, width=22,justify='left')
+etxname.grid(row=0,column=1)
+etxaddress=Entry (fla, textvariable-Address, font('arial', 16, 'bold'),bd-16,width-22, justify'left')
+etxaddress.grid(row=0,column=3)
+etxemployer=Entry (fla, textvariable Employer, font('arial',16, 'bold'), bd-16,width 22,justify-'left!)
+etxemployer.grid(row=1,column=1)
+etxhoursworked-Entry(fla, textvariable-HoursWorked, font ('arial', 16, 'bold'),bd-16,width=22,justify='left')
+etxhoursworked.grid(row=2,column=1)
+etxwagesperhours=Entry (fla, textvariable wageshour, font=('arial', 16, 'bold'), bd=16,width=22,justify='left')
+etxwagesperhours.grid(row=2,column=3)
+etxnin=Entry (fla, textvariable NINumber, font=('arial', 16, 'bold'), bd-16,width=22,justify='left')
+
+etxname=Entry (fla, textvariable Name, font=('arial', 16, 'bold'), bd = 16 width=22,justify='left')
+etxname.grid(row=0,column=1)
+etxaddress=Entry (fla,textvariable=Address, font=('arial', 16, 'bold'), bd= 16 width=22,justify='left') 
+etxaddress.grid(row=0,column=3)
+etxemployer=Entry (fla, textvariable=Employer, font=('arial', 16, 'bold'), bd=16, width=22,justify='left')
+etxemployer.grid(row=1,column=1)
+etxhoursworked=Entry(fla, textvariable=HoursWorked, font=('arial', 16, 'bold'),bd=16,width=22,justify='left') 
+etxhoursworked.grid(row=2,column=1)
+etxwagesperhours=Entry(fla, textvariable=wageshour, font=('arial', 16, 'bold'),bd l = 16 width=22,justify='left') 
+etxwagesperhours.grid( row = 2 column = 3 )
+etxnin-Entry (fla, textvariable=NINumber, font=('arial', 16, 'bold'), bd = 16 width=22,justify='left') 
+etxnin.grid(row=1,column=3)
+etxgrosspay=Entry (fla, textvariable Payable, font=('arial', 16, 'bold'), d = 16 width=22,justify='left')
+etxgrosspay.grid(row=4,column=1)
+etxnetpay=Entry (fla, textvariable NetPayable, font=('arial', 16, 'bold'), bd = 16 width=22,justify='left') 
+etxnetpay.grid(row= 4 column=3)
+etxtax=Entry(fla, textvariable-Taxable, font=('arial', 16, 'bold'), bd = 16 width=22,justify='left') 
+etxtax.grid(row=3,column=1)
+etxovertime= Entry(fla, textvariable-OverTimeBonus, font=('arial', 16, 'bold'), d = 16 width=22,justify='left')
+etxovertime.grid(row=3,column=3)
+//Text Widget
+payslip=Label (f2, textvariable-DateOfOrder, font=('arial', 21, 'bold'), fg="#3D3D3D",bg="#EEEED5").grid(row=0,column=0) 
+txtpayslip-Text (f2, height=22,width=34, d = 16 font=('arial', 13, 'bold'), fg="green",bg="#EEEED5") 
+txtpayslip.grid(row=1,column=0)
+
+//buttons
+
+btnsalary=Button (flb, text="Weekly Salary', padx=16, pady=16,bd l = 8 font=('arial', 16, 'bold'), width=14,fg="#3D3D3D",bg="#EEEEDS",command-weeklywages).grid(row=0,column=0)
+btnreset=Button (flb, text='Reset', padx=16, pady=16, bd = 8 font=('arial', 16, 'bold'), width=14,command=reset, fg="#3D3D3D", bg="#EEEED5").grid(row=0,column= 1)
+btnpayslip=Button (flb, text='View Payslip',padx=16, pady=16,bd-8, font=('arial', 16, 'bold'), width=14,command=enterinfo,fg="#3D3D3D", bg="#EEEED5").grid(row=0,column=2)
+btnexit=Button(flb,text='Exit System', padx=16,pady=16, bd=8, font=('arial', 16, 'bold'), width=14,command=exit,fg="#3D3D3D", bg="#EEEED5").grid(row=0,column=3)
+
+
+
