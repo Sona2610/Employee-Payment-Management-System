@@ -1,7 +1,7 @@
 
 # Payroll Management System
 
-## Overview
+## Overview 
 
 This Payroll Management System is a Python-based GUI application designed to help manage employee payroll calculations. Users can enter employee details, calculate weekly wages, taxes, and overtime, and generate a payslip. The system ensures accuracy and efficiency in payroll management.
 
